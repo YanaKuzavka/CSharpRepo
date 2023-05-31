@@ -4,65 +4,20 @@
 
 //1, -7, 567, 89, 223-> 3
 
-Console.Write("Введите числа через запятую: ");
-int[] numbers = StringToNum(Console.ReadLine());
-PrintArray(numbers);
-int sum = 0;
-for (int i = 0; i < numbers.Length; i++)
+System.Console.WriteLine("Введите размер массива: ");
+int NewMass = Convert.ToInt32(Console.ReadLine());
+
+int PositiveNums()
 {
-    if (numbers[i] > 0)
+    int Positive = 0;
+    for (int i = 0; i < NewMass; i++)
     {
-        sum++;
+        Console.WriteLine($"Введите число {i + 1}: ");
+        int num = Convert.ToInt32(Console.ReadLine());
+
+        if (num > 0)
+            Positive++;
     }
+    return Positive;
 }
-Console.WriteLine();
-Console.WriteLine($"количество значений больше 0 = {sum}");
-
-
-int[] StringToNum(string input)
-{
-    int count = 1;
-    for (int i = 0; i < input.Length; i++)
-    {
-        if (input[i] == ',')
-        {
-            count++;
-        }
-    }
-
-    int[] numbers = new int [count];
-    int index = 0;
-
-    for (int i = 0; i < input.Length; i++)
-    {
-        string temp = "";
-
-        while (input [i] != ',')
-        {
-        if(i != input.Length - 1)
-        {
-            temp += input [i].ToString();
-            i++;
-        }
-        else
-        {
-            temp += input [i].ToString();
-            break;
-        }
-        }
-        numbers[index] = Convert.ToInt32(temp);
-        index++;
-    }
-    return numbers;
-}
-
-
-void PrintArray(int[] array)
-{
-    Console.Write("[ ");
-    for (int i = 0; i < array.Length; i++)
-    {
-        Console.Write(array[i] + " ");
-    }
-    Console.Write("]");
-}
+Console.WriteLine($"Положительных чисел: {PositiveNums()}");
